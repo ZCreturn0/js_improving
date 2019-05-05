@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var counter = (function(){
+            var num = 0;
+            return function(){
+                num++;
+                console.log('counter函数运行了' + num + '次');
+            }
+        })();       // 立即执行函数,返回一个函数,这个返回的函数要依赖num的值,所以num不会随函数结束而销毁
+        counter();
+        counter();
+        counter();
+    </script>
+</body>
+</html>

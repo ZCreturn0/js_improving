@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .imagesWrapper{
+            width: 100px;
+            height: 100px;
+            overflow: hidden;
+            position: relative;
+        }
+        .images{
+            width: 400px;
+            height: 100px;
+            position: absolute;
+            left: 0px;
+            top: 0px;
+        }
+        .image{
+            width: 100px;
+            height: 100px;
+            display: inline-block;
+        }
+        .image1{
+            background: rgb(165, 163, 52);
+        }
+        .image2{
+            background: rgb(29, 76, 177);
+        }
+        .image3{
+            background: rgb(189, 20, 124);
+        }
+        .image4{
+            background: rgb(206, 122, 26);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="link"><a href="#">link1</a></div>
+        <div class="link"><a href="#">link2</a></div>
+        <div class="link"><a href="#">link3</a></div>
+    </div>
+    <div class="imagesWrapper">
+        <div class="images">
+            <div class="image image1">1</div><!--
+            --><div class="image image2">2</div><!--
+            --><div class="image image3">3</div><!--
+            --><div class="image image4">4</div>
+        </div>
+    </div>
+    <script>
+        // var links = document.getElementsByClassName('link');
+        // var timer;
+        // links[0].onmouseover = function(){
+        //     clearInterval(timer);
+        //     timer = setTimeout(() => {
+        //         console.log('00000');
+        //     }, 3 * 1000);
+        // }
+        // links[1].onmouseover = function () {
+        //     clearInterval(timer);
+        //     timer = setTimeout(() => {
+        //         console.log('11111');
+        //     }, 3 * 1000);
+        // }
+        // links[2].onmouseover = function () {
+        //     clearInterval(timer);
+        //     timer = setTimeout(() => {
+        //         console.log('22222');
+        //     }, 3 * 1000);
+        // }
+        var links = document.getElementsByClassName('link');
+        var timer;
+        var moveEle = document.getElementsByClassName('images')[0];
+        // 参数: 目标x坐标,目标y坐标,动画间隔
+        function moveElement(x, y, interval) {
+            var posX = parseInt(moveEle.style.left) || 0;
+            var posY = parseInt(moveEle.style.top) || 0;
+            if (posX == x && posY == y) {
+                return true;
+            }
+            if (posX < x) {
+                posX++;
+            }
+            if (posX > x) {
+                posX--;
+            }
+            if (posY < y) {
+                posY++;
+            }
+            if (posY > y) {
+                posY--;
+            }
+            moveEle.style.left = posX + 'px';
+            moveEle.style.top = posY + 'px';
+            var repeat = `moveElement(${x}, ${y}, ${interval})`;
+            clearTimeout(timer);
+            timer = setTimeout(repeat, interval);
+        }
+        var moveInterval = 10;
+        links[0].onmouseover = function () {
+            moveElement(-100, 0, moveInterval);
+        }
+        links[1].onmouseover = function () {
+            moveElement(-200, 0, moveInterval);
+        }
+        links[2].onmouseover = function () {
+            moveElement(-300, 0, moveInterval);
+        }
+    </script>
+</body>
+</html>

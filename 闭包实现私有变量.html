@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Dog(name){
+            var privateName = 'private:' + name;
+            this.publicName = 'public:' + name;
+            this.getPrivateName = function(){
+                return privateName;
+            }
+            this.setPrivateName = function (name) {
+                privateName = name;
+            }
+        }
+        var d = new Dog('aaaa');
+        console.log(d.publicName);
+        console.log(d.privateName);         // 私有变量不能访问
+        console.log(d.getPrivateName());    // 通过向外暴露的函数访问私有变量
+    </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var name = 'cccc';
+        Function.prototype.bind = function(){
+            // this 指向方法
+            var _this= this;
+            // context 指向要绑定的对象
+            var context = [].shift.call(arguments);
+            return function(){
+                return _this.apply(context, arguments);
+            }
+        }
+        var obj = {
+            name: 'aaa'
+        };
+        function showName(){
+            console.log(this.name);
+        }
+        showName();             // cccc
+        var objShowName = showName.bind(obj);
+        objShowName();          // aaa
+    </script>
+</body>
+</html>

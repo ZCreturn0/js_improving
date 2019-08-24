@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var a = 10;
+        function func(){
+            var a = 20;
+            console.log(a);         // 输出 局部变量
+            console.log(window.a);  // 获取全局变量
+        }
+        func();
+    </script>
+</body>
+</html>

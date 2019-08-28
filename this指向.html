@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var name = 'The window';
+        var obj = {
+            name: 'The obj',
+            getName(){
+                return this.name;
+            }
+        }
+        var res = (obj.getName = obj.getName)();
+        // 等价于
+        // var fun = obj.getName;
+        // res = (fun)();
+        // 赋值语句返回的是等号右边的值,所以(obj.getName = obj.getName)返回的是obj.getName这个函数
+        // 此时调用这个函数,this指向window
+        obj.getName = obj.getName
+        // (obj.getName)() 简单的立即执行函数  等价于 obj.getName()
+        var res2 = (obj.getName)();
+        console.log(res);
+        console.log(res2);
+    </script>
+</body>
+</html>

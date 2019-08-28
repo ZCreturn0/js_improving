@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        Function.prototype.apply = function(...args){
+            // this 指向方法
+            var _this = this;
+            // context 指向对象
+            var context = [].shift.call(args);
+            var method = _this.bind(context, ...args);
+            return method();
+        }
+        var obj = {
+            name: 'aaa'
+        };
+        function showName(){
+            console.log(this.name);
+        }
+        showName();                 // cccc
+        showName.apply(obj);
+    </script>
+</body>
+</html>

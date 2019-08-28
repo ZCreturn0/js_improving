@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var a = 2;
+        // js不具有动态作用域,只有词法域
+        // 词法域是定义时确定的
+        // 动态作用域是运行时确定的
+        function foo(){
+            console.log(a);         // 2
+        }
+        function bar(){
+            var a = 3;
+            foo();
+        }
+        bar();
+    </script>
+</body>
+</html>
